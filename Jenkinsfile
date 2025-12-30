@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean Old Containers') {
+            steps {
+                sh 'docker-compose down -v --remove-orphans || true'
+            }
+        }
 
         stage('Build Docker Images') {
             steps {
@@ -10,11 +15,12 @@ pipeline {
         }
 
         stage('Run Containers') {
-    steps {
-        sh 'docker-compose up -d --build --force-recreate'
+            steps {
+                sh 'docker-compose up -d --build --force-recreate'
+            }
+        }
     }
 }
 
-    }
-}
+
 
