@@ -31,7 +31,17 @@ if not SECRET_KEY:
 DEBUG = 'RENDER' not in os.environ
 
 # Docker HOST
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '13.203.192.82',   # EC2 public IP
+    'localhost',
+    '127.0.0.1'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://3.110.207.68",
+    "http://3.110.207.68:8000",
+]
+
 
 # Add here your deployment HOSTS
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:5085', 'http://127.0.0.1:8000', 'http://127.0.0.1:5085']
