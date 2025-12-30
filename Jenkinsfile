@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Clean Old Containers') {
             steps {
-                sh 'docker-compose down -v --remove-orphans || true'
+                // Force remove any existing containers with these names
+                sh 'docker rm -f postgres_db django_app || true'
+                sh 'docker volume prune -f || true'  // optional: remove dangling volumes
             }
         }
 
@@ -21,6 +23,7 @@ pipeline {
         }
     }
 }
+
 
 
 
