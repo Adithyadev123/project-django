@@ -32,8 +32,7 @@ DEBUG = 'RENDER' not in os.environ
 
 # Docker HOST
 ALLOWED_HOSTS = [
-    '13.232.80.111'
-    '13.203.192.82',   # EC2 public IP
+    '13.232.80.111',   # EC2 public IP
     'localhost',
     '127.0.0.1'
 ]
