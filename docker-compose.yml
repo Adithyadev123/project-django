@@ -4,18 +4,10 @@ services:
   web:
     build: .
     container_name: django_app
-    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     depends_on:
       - db
-    environment:
-      DB_ENGINE: postgresql
-      DB_NAME: mydb
-      DB_USERNAME: postgres
-      DB_PASS: secret
-      DB_HOST: db
-      DB_PORT: 5432
 
   db:
     image: postgres:15
@@ -30,5 +22,6 @@ services:
 
 volumes:
   postgres_data:
+
 
 
