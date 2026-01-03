@@ -2,24 +2,41 @@ pipeline {
     agent any
 
     stages {
-        stage('Clean Old Containers') {
+
+        stage('Cleanup') {
             steps {
-                // Force remove any existing containers with these names
-                sh 'docker rm -f postgres_db django_app || true'
-                sh 'docker volume prune -f || true'  // optional: remove dangling volumes
+                sh '''
+                docker rm -f django_app postgres_db || true
+                docker image prune -af || true
+                '''
             }
         }
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker-compose build'
+                sh 'docker-compose build --no-cache'
             }
         }
 
-        stage('Run Containers') {
+        stage('Start Containers') {
             steps {
-                sh 'docker-compose up -d --build --force-recreate'
+                sh 'docker-compose up -d'
             }
+        }
+
+        stage('Run Database Migrations') {
+            steps {
+                sh 'docker exec django_app python manage.py migrate'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Deployment completed successfully'
+        }
+        failure {
+            echo '❌ Deployment failed'
         }
     }
 }
