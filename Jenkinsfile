@@ -14,13 +14,13 @@ pipeline {
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker-compose build --no-cache'
+                sh 'docker compose build --no-cache'
             }
         }
 
         stage('Start Containers') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker compose up -d'
             }
         }
 
@@ -40,6 +40,7 @@ pipeline {
         }
     }
 }
+
 
 
 
