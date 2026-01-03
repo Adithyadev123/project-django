@@ -91,13 +91,14 @@ TEMPLATES = [
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mydb",
+        "NAME": "postgres",
         "USER": "postgres",
-        "PASSWORD": "secret",
-        "HOST": "db",
+        "PASSWORD": "StrongPassword123",
+        "HOST": "django-rds-db.cz24aseke4o0.ap-south-1.rds.amazonaws.com",
         "PORT": "5432",
     }
 }
+
 
 # --------------------------------------------------
 # PASSWORD VALIDATION
