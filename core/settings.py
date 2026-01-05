@@ -24,12 +24,14 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "0.0.0.0",
-    "*"
+    "*",
+    "wsertyuio-1656982469.ap-south-1.elb.amazonaws.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
+    "wsertyuio-1656982469.ap-south-1.elb.amazonaws.com"
 ]
 
 # --------------------------------------------------
