@@ -34,8 +34,6 @@ CSRF_TRUSTED_ORIGINS = [
     "http://wsertyuio-1656982469.ap-south-1.elb.amazonaws.com"
 ]
 
-]
-
 # --------------------------------------------------
 # APPLICATIONS
 # --------------------------------------------------
